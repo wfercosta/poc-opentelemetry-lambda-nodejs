@@ -50,7 +50,7 @@ jobs:
         run: |
           aws cloudformation package \
             --template-file lambda.yaml \
-            --s3-bucket lambda-deploy-artifacts \
+            --s3-bucket wfercosta-deploy-lambda \
             --s3-prefix lambda \
             --output-template-file lambda-packaged.yaml
       - name: deploy-lambda
