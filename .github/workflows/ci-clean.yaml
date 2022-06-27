@@ -18,7 +18,8 @@ jobs:
       - name: deploy
         working-directory: infra
         run: |
-          echo
+          aws cloudformation delete-stack \
+            --stack-name demo-lambda
   cleanup-base:
     needs: cleanup-lambda
     runs-on: ubuntu-latest
@@ -33,11 +34,8 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: npm install
-        working-directory: app 
-        run: |
-          npm install
       - name: package-lambda
         working-directory: infra
         run: |
-          echo
+          aws cloudformation delete-stack \
+            --stack-name demo-base
