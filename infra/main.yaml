@@ -9,6 +9,21 @@ Resources:
     Properties:
       BucketName: lambda-deploy-artifacts
 
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref Bucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+        - Effect: Allow
+          Principal: '*'
+          Action:
+          - s3:*
+          Resource: 
+          - !Join ['', arn:aws:s3:::, !Ref Bucket]
+          - !Join ['', arn:aws:s3:::, !Ref Bucket, '/*']
+
   Role:
     Type: AWS:IAM:Role
     Properties:
