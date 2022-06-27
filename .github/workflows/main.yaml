@@ -24,10 +24,12 @@ jobs:
           CI: true
         run: |
           npm ci
+        working-directory: app 
       - name: deploy
+        working-directory: infra
         run: |
           aws cloudformation package \
-            --template-file infra/main.yaml \
+            --template-file main.yaml \
             --s3-bucket lambda-deploy-artifacts \
             --s3-prefix fn-instrumented-opt-deploy \
             --output-template-file main-packaged.yaml
