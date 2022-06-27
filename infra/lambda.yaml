@@ -18,7 +18,7 @@ Resources:
       - PolicyName: lambda-traceability
         PolicyDocument:
           Version: 2012-10-17
-          Statetment:
+          Statement:
           - Effect: Allow
             Resource: '*'
             Action:
