@@ -12,7 +12,7 @@ Resources:
         - Effect: Allow
           Principal:
             Service: 
-            - lambda.amazonaws.comm
+            - lambda.amazonaws.com
           Action: sts:AssumeRole
       ManagedPolicyArns:
       - arn:aws:iam::aws:policy/service role/AWSLambdaBasicExecutionRole
