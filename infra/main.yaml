@@ -31,4 +31,4 @@ Resources:
       Runtime: nodejs12.x
       Role: !GetAtt Role.Arn
       Timeout: 300
-      Code: app/
+      Code: ../app
