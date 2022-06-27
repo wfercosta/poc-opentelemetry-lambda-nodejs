@@ -4,7 +4,7 @@ Description: 'OpenTelemetry Example'
 
 Resources:
   Role:
-    Type: AWS:IAM:Role
+    Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
         Version: 2010-10-17
