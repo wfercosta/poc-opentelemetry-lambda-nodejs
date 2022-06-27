@@ -20,6 +20,8 @@ Resources:
   Function:
     Type: AWS::Lambda::Function
     Properties:
+      Layers:
+      - !Sub arn:aws:lambda:${AWS::Region}:901920570463:layer:aws-otel-nodejs-amd64-ver-1-2-0:1
       FunctionName: fn-instrumented-open-telemetry
       Description: Instrumented Lambda OpenTelemetry
       Handler: index.handler
