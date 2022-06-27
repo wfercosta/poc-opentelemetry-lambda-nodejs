@@ -28,6 +28,7 @@ jobs:
             --region us-east-1 \
             --capabilities CAPABILITY_IAM     
   deploy:
+    needs: prepare-infra
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
