@@ -11,7 +11,8 @@ Resources:
         Statement:
         - Effect: Allow
           Principal:
-            Service: lambda.amazonaws.comm
+            Service: 
+            - lambda.amazonaws.comm
           Action: sts:AssumeRole
       ManagedPolicyArns:
       - arn:aws:iam::aws:policy/service role/AWSLambdaBasicExecutionRole
