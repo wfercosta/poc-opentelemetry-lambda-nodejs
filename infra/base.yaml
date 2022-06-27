@@ -7,6 +7,9 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: wfercosta-deploy-lambda
+      PublicAccessBlockConfiguration:
+        BlockPublicPolicy : true
+        RestrictPublicBuckets : true
 
   BucketPolicy:
     Type: AWS::S3::BucketPolicy
