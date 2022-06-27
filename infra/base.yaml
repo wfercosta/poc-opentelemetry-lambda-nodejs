@@ -20,5 +20,5 @@ Resources:
           Action:
           - s3:*
           Resource: 
-          - !Join ['', arn:aws:s3:::, !Ref Bucket]
-          - !Join ['', arn:aws:s3:::, !Ref Bucket, '/*']
+          - !Join ['', [arn:aws:s3:::, !Ref Bucket]]
+          - !Join ['', [arn:aws:s3:::, !Ref Bucket, '/*']]
