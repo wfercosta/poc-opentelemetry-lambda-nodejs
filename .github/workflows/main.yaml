@@ -6,6 +6,27 @@ on:
     - main
 
 jobs:
+  prepare-infra:
+     runs-on: ubuntu-latest
+     steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: deploy
+        working-directory: infra
+        run: |
+          aws cloudformation deploy \
+            --template-file base.yaml \
+            --stack-name demo-base \
+            --region us-east-1 \
+            --capabilities CAPABILITY_IAM     
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -23,16 +44,19 @@ jobs:
         working-directory: app 
         run: |
           npm install
-      - name: deploy
+      - name: package-lambda
         working-directory: infra
         run: |
           aws cloudformation package \
-            --template-file main.yaml \
+            --template-file lambda.yaml \
             --s3-bucket lambda-deploy-artifacts \
-            --s3-prefix fn-instrumented-opt-deploy \
-            --output-template-file main-packaged.yaml
+            --s3-prefix lambda \
+            --output-template-file lambda-packaged.yaml
+      - name: deploy-lambda
+        working-directory: infra
+        run: |
           aws cloudformation deploy \
-            --template-file main-packaged.yaml \
-            --stack-name demo-open-telemetry \
+            --template-file lambda-packaged.yaml \
+            --stack-name demo-lambda \
             --region us-east-1 \
             --capabilities CAPABILITY_IAM
