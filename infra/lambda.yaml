@@ -20,7 +20,7 @@ Resources:
           Version: 2012-10-17
           Statetment:
           - Effect: Allow
-            Principal: '*'
+            Resource: '*'
             Action:
             - xray:PutTraceSegments
             - xray:PutTelemetryRecords
