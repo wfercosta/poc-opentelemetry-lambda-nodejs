@@ -29,3 +29,8 @@ Resources:
       Role: !GetAtt Role.Arn
       Timeout: 300
       Code: ../app
+      TracingConfig:
+        Mode: Active
+      Environment:
+        Variables:
+          AWS_LAMBDA_EXEC_WRAPPER: /opt/otel-handler
