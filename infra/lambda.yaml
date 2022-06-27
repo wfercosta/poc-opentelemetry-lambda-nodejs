@@ -3,19 +3,19 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: 'OpenTelemetry Example'
 
 Resources:
-  # Role:
-  #   Type: AWS::IAM::Role
-  #   Properties:
-  #     AssumeRolePolicyDocument:
-  #       Version: 2012-10-17
-  #       Statement:
-  #       - Effect: Allow
-  #         Principal:
-  #           Service: 
-  #           - lambda.amazonaws.comm
-  #         Action: sts:AssumeRole
-  #     ManagedPolicyArns:
-  #     - arn:aws:iam::aws:policy/service role/AWSLambdaBasicExecutionRole
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: 
+            - lambda.amazonaws.comm
+          Action: sts:AssumeRole
+      ManagedPolicyArns:
+      - arn:aws:iam::aws:policy/service role/AWSLambdaBasicExecutionRole
 
   Function:
     Type: AWS::Lambda::Function
