@@ -14,6 +14,16 @@ Resources:
             Service: 
             - lambda.amazonaws.com
           Action: sts:AssumeRole
+      Policies:
+      - PolicyName: lambda-traceability
+        PolicyDocument:
+          Version: 2012-10-17
+          Statetment:
+          - Effect: Allow
+            Principal: '*'
+            Action:
+            - xray:PutTraceSegments
+            - xray:PutTelemetryRecords
       ManagedPolicyArns:
       - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
 
