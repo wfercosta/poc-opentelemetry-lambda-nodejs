@@ -1,4 +1,4 @@
-name: Ci - Deploy
+name: Ci - Cleanup
 on:
   push:
     branches:
