@@ -44,3 +44,4 @@ Resources:
       Environment:
         Variables:
           AWS_LAMBDA_EXEC_WRAPPER: /opt/otel-handler
+          OPENTELEMETRY_COLLECTOR_CONFIG_FILE: /var/task/collector.yaml
