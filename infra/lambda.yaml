@@ -45,3 +45,9 @@ Resources:
         Variables:
           AWS_LAMBDA_EXEC_WRAPPER: /opt/otel-handler
           OPENTELEMETRY_COLLECTOR_CONFIG_FILE: /var/task/collector.yaml
+
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${Function}
+      RetentionInDays: 1
